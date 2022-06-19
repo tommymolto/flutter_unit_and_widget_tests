@@ -9,8 +9,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  mocktail: ^0.1.0
-  bloc: ^7.0.1
+  mocktail: ^0.3.0
+  bloc: ^8.0.3
   http: ^0.13.4
 
 dev_dependencies:

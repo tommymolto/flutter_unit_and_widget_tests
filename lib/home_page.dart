@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_unit_and_widget_tests/person_bloc.dart';
+import 'package:flutter_unit_and_widget_tests/person_event.dart';
 import 'package:flutter_unit_and_widget_tests/person_state.dart';
 
 import 'bloc_provider.dart';
@@ -16,7 +17,7 @@ class HomePage extends StatelessWidget {
             stream: bloc.stream,
             builder: (context, snapshot) {
               final isEnable = bloc.state is PersonListState && (bloc.state as PersonListState).data.isNotEmpty;
-              return IconButton(icon: Icon(Icons.refresh_outlined), onPressed: isEnable ? () => bloc.add(PersonEvent.clear) : null);
+              return IconButton(icon: Icon(Icons.refresh_outlined), onPressed: isEnable ? () => bloc.add(ClearPersonEvent()) : null);
             },
           )
         ],
@@ -57,7 +58,7 @@ class _ListWidget extends StatelessWidget {
     if (listPerson.isEmpty) {
       return TextButton(
           onPressed: () {
-            bloc.add(PersonEvent.fetch);
+            bloc.add(FetchPersonFetch());
           },
           child: Text('Fetch persons'));
     }

@@ -1,3 +1,4 @@
+import 'package:flutter_unit_and_widget_tests/person_event.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_unit_and_widget_tests/person.dart';
@@ -15,7 +16,7 @@ void main() {
   test('deve retorna uma lista de person', () async {
     when(() => repository.getPerson()).thenAnswer((_) async => <Person>[person, person]);
 
-    bloc.add(PersonEvent.fetch);
+    bloc.add(FetchPersonFetch());
 
     await expectLater(
         bloc.stream,
@@ -28,7 +29,7 @@ void main() {
   test('deve disparar um error', () async {
     when(() => repository.getPerson()).thenThrow(Exception('deu error'));
 
-    bloc.add(PersonEvent.fetch);
+    bloc.add(FetchPersonFetch());
 
     await expectLater(
         bloc.stream,

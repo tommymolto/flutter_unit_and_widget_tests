@@ -7,6 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_unit_and_widget_tests/person_state.dart';
 import 'package:http/http.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:flutter_unit_and_widget_tests/bloc_provider.dart';
@@ -38,9 +39,9 @@ void main() {
 
     await tester.tap(textButton);
 
-    await tester.runAsync(() => bloc.stream.first);
-    await tester.pump();
-    expect(loading, findsOneWidget);
+    //await tester.pump();
+    //await tester.runAsync(() => bloc.stream.firstWhere((element) => element == PersonLoadingState()));
+    //expect(loading, findsOneWidget);
 
     await tester.runAsync(() => bloc.stream.first);
     await tester.pump();
